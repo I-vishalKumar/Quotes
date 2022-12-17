@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title>jokes F D</title>
+    <link rel="stylesheet" href="jokesCss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="box">
+
+      <div class="inner">
+          <span><ion-icon name="logo-twitch"></ion-icon></span>
+      </div>
+
+      <div class="text">
+
+       <p class="area"></p>
+
+    <div class="newbutton">new quote</div>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+   <script>
+       let data = "";
+       let tex = document.querySelector('.area')
+       let button = document.querySelector('.newbutton');
+       const api = "https://type.fit/api/quotes";
+
+    const newquotes = ()=>{
+          let num = Math.floor(Math.random()*1600);
+          tex.innerText = data[num].text;
+    }
+     const quotes = async ()=>{
+
+       try{
+
+         let d = await fetch(api);
+         data = await d.json();
+         newquotes();
+       }catch(err){console.log(err);}
+     }
+      button.addEventListener('click',newquotes);
+      quotes();
+
+
+   </script>
+
+  </body>
+</html>
